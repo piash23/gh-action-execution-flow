@@ -1,0 +1,20 @@
+# Idea behind matrix is that you can run the same job with different configuration
+# for example different runner or different node veriosns or any other value you might be interested in changing
+name: Matrix Demo
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get code
+      uses: actions/checkout@v3
+    - name: Install NodeJS
+      uses: actions/setup-node@v3
+      with: 
+        node-version: 14
+    - name: Install Dependencies
+      run: npm ci
+    - name: Build Project
+      run: npm build
+
+
